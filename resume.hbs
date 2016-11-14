@@ -1,7 +1,3 @@
-<!--
-  This awesome resume was created {{#if resume.basics.name}}by {{resume.basics.name}} {{/if}}with the JSON resume schema: https://jsonresume.org/
-  It uses the Eloquent theme: https://github.com/thibaudcolas/jsonresume-theme-eloquent
--->
 <!doctype html>
 <html lang="en">
 <head>
@@ -110,7 +106,7 @@
               <li class="basics-item hidden-print js-download-trigger" style="display: none;">
                 <a id="js-download" href="#download">
                   <span class="icon text-muted"><i aria-hidden="true" class="icon-lg icon-download"></i></span>
-                  <span class="info">Download this resume</span>
+                  <span class="info">Lebenslauf herunterladen</span>
                 </a>
               </li>
             </ul>
@@ -133,7 +129,7 @@
           {{/resume.basics}}
 
           <ul class="nav nav-justified hidden-xs hidden-sm">
-            <li><a href="#top" class="text-muted" data-scroll title="Scroll to top"><i aria-hidden="true" class="icon-chevron-up"></i><span class="sr-only">Go to top</span></a></li>
+            <li><a href="#top" class="text-muted" data-scroll title="Scroll to top"><i aria-hidden="true" class="icon-chevron-up"></i><span class="sr-only">Nach oben</span></a></li>
           </ul>
         </div>
       </section>
@@ -144,7 +140,7 @@
             <div class="detail" id="about">
               <h3 class="text-uppercase">
                 <a class="anchor-link text-muted" data-scroll href="#about">
-                  <i aria-hidden="true" class="icon-lg icon-user"></i> About
+                  <i aria-hidden="true" class="icon-lg icon-user"></i> Über
                   <span class="anchor-icon" aria-hidden="true"></span>
                 </a>
               </h3>
@@ -161,161 +157,12 @@
 
       <section class="col-md-8 card-wrapper details-card-wrapper">
         <div class="card">
-
-          {{#if resume.work}}
-            <div class="detail" id="experience">
-              <h3 class="text-uppercase">
-                <a class="anchor-link text-muted" data-scroll href="#experience">
-                  <i aria-hidden="true" class="icon-lg icon-building"></i> Experience
-                  <span class="anchor-icon" aria-hidden="true"></span>
-                </a>
-              </h3>
-
-              <ul class="list-unstyled">
-                {{#each resume.work}}
-                  <li class="detail-item row" id="{{itemID 'experience' @index ../resume.work.length}}" itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">
-                    <div class="col-sm-9 detail-item-content">
-                      <a class="anchor-link item-anchor" data-scroll href="#{{itemID 'experience' @index ../resume.work.length}}">#</a>
-                      <h4>
-                        <strong>{{position}}</strong>
-                        {{~#if company~}}
-                          ,&nbsp;
-                          {{#if website}}
-                            <a href="{{website}}"  target="_blank" itemprop="url"><span itemprop="name">{{company}}</span></a>
-                          {{else}}
-                            <span itemprop="name">{{company}}</span>
-                          {{/if}}
-                        {{/if}}
-                      </h4>
-
-                      {{#if startDate}}
-                        <p class="visible-xs-block text-muted">
-                          <small>
-                            <time datetime="{{startDate}}">{{formatMMMMYYYY startDate}}</time>&nbsp;—&nbsp;
-                            {{#if endDate}}
-                              <time datetime="{{endDate}}">{{formatMMMMYYYY endDate}}</time>
-                            {{else}}
-                              <time>Present</time>
-                            {{/if}}
-                            &nbsp;<span class="duration-counter"><i aria-hidden="true" class="icon-clock-o"></i>&nbsp;{{humaneDuration startDate endDate}}</span>
-                          </small>
-                        </p>
-                      {{/if}}
-
-                      <p>{{nl2br summary}}</p>
-
-                      {{#if highlights}}
-                        <ul class="detail-highlights">
-                          {{#each highlights}}
-                            <li>{{.}}</li>
-                          {{/each}}
-                        </ul>
-                      {{/if}}
-                    </div>
-
-                    {{#if startDate}}
-                      <div class="col-sm-3 detail-item-sidebar text-muted text-center hidden-xs">
-                        <p>
-                          <time datetime="{{startDate}}">{{formatMMMMYYYY startDate}}</time>
-                          <br>
-                          &nbsp;—&nbsp;
-                          {{#if endDate}}
-                            <br>
-                            <time datetime="{{endDate}}">{{formatMMMMYYYY endDate}}</time>
-                          {{else}}
-                            <time>Present</time>
-                          {{/if}}
-                        </p>
-                        <p>
-                          <i aria-hidden="true" class="icon-clock-o icon-left"></i>&nbsp;{{humaneDuration startDate endDate}}
-                        </p>
-                      </div>
-                    {{/if}}
-                  </li>
-                {{/each}}
-              </ul>
-            </div>
-          {{/if}}
-
-          {{#if resume.volunteer}}
-            <div class="detail" id="projects">
-              <h3 class="text-uppercase">
-                <a class="anchor-link text-muted" data-scroll href="#projects">
-                  <i aria-hidden="true" class="icon-lg icon-bookmark"></i> Projects
-                  <span class="anchor-icon" aria-hidden="true"></span>
-                </a>
-              </h3>
-
-              <ul class="list-unstyled">
-                {{#each resume.volunteer}}
-                  <li class="detail-item row" id="{{itemID 'project' @index ../resume.volunteer.length}}" itemprop="memberOf" itemscope itemtype="http://schema.org/Organization">
-                    <div class="col-sm-9 detail-item-content">
-                      <a class="anchor-link item-anchor" data-scroll href="#{{itemID 'project' @index ../resume.volunteer.length}}">#</a>
-                      <h4>
-                        {{#if website}}
-                          <a href="{{website}}"  target="_blank" itemprop="url"><strong itemprop="name">{{organization}}</strong></a>
-                        {{else}}
-                          <strong itemprop="name">{{organization}}</strong>
-                        {{/if}}
-                        {{~#if position~}}
-                          ,&nbsp;<span>{{position}}</span>
-                        {{/if}}
-                      </h4>
-
-                      {{#if startDate}}
-                        <p class="visible-xs-block text-muted">
-                          <small>
-                            <time datetime="{{startDate}}">{{formatMMMMYYYY startDate}}</time>&nbsp;—&nbsp;
-                            {{#if endDate}}
-                              <time datetime="{{endDate}}">{{formatMMMMYYYY endDate}}</time>
-                            {{else}}
-                              <time>Present</time>
-                            {{/if}}
-                            &nbsp;<span class="duration-counter"><i aria-hidden="true" class="icon-clock-o"></i>&nbsp;{{humaneDuration startDate endDate}}</span>
-                          </small>
-                        </p>
-                      {{/if}}
-
-                      <p itemprop="description">{{nl2br summary}}</p>
-
-                      {{#if highlights}}
-                        <ul class="detail-highlights">
-                          {{#each highlights}}
-                            <li>{{.}}</li>
-                          {{/each}}
-                        </ul>
-                      {{/if}}
-                    </div>
-
-                    {{#if startDate}}
-                      <div class="col-sm-3 detail-item-sidebar text-muted text-center hidden-xs">
-                        <p>
-                          <time datetime="{{startDate}}">{{formatMMMMYYYY startDate}}</time>
-                          <br>
-                          &nbsp;—&nbsp;
-                          {{#if endDate}}
-                            <br>
-                            <time datetime="{{endDate}}">{{formatMMMMYYYY endDate}}</time>
-                          {{else}}
-                            <time>Present</time>
-                          {{/if}}
-                        </p>
-                        <p>
-                          <i aria-hidden="true" class="icon-clock-o icon-left"></i>&nbsp;{{humaneDuration startDate endDate}}
-                        </p>
-                      </div>
-                    {{/if}}
-                  </li>
-                {{/each}}
-              </ul>
-            </div>
-          {{/if}}
-
+        
           {{#if resume.education}}
             <div class="detail" id="education">
               <h3 class="text-uppercase">
                 <a class="anchor-link text-muted" data-scroll href="#education">
-                  <i aria-hidden="true" class="icon-lg icon-graduation-cap"></i> Education
+                  <i aria-hidden="true" class="icon-lg icon-graduation-cap"></i> Schulbildung
                   <span class="anchor-icon" aria-hidden="true"></span>
                 </a>
               </h3>
@@ -340,7 +187,7 @@
                             {{#if endDate}}
                               <time datetime="{{endDate}}">{{formatYYYY endDate}}</time>
                             {{else}}
-                              <time>Present</time>
+                              <time>Heute</time>
                             {{/if}}
                             &nbsp;<span class="duration-counter"><i aria-hidden="true" class="icon-clock-o"></i>&nbsp;{{humaneDuration startDate endDate}}</span>
                           </small>
@@ -371,7 +218,157 @@
                           {{#if endDate}}
                             <time datetime="{{endDate}}">{{formatYYYY endDate}}</time>
                           {{else}}
-                            <time>Present</time>
+                            <time>Heute</time>
+                          {{/if}}
+                        </p>
+                        <p>
+                          <i aria-hidden="true" class="icon-clock-o icon-left"></i>&nbsp;{{humaneDuration startDate endDate}}
+                        </p>
+                      </div>
+                    {{/if}}
+                  </li>
+                {{/each}}
+              </ul>
+            </div>
+          {{/if}}
+
+
+          {{#if resume.work}}
+            <div class="detail" id="experience">
+              <h3 class="text-uppercase">
+                <a class="anchor-link text-muted" data-scroll href="#experience">
+                  <i aria-hidden="true" class="icon-lg icon-building"></i> Arbeitserfahrung
+                  <span class="anchor-icon" aria-hidden="true"></span>
+                </a>
+              </h3>
+
+              <ul class="list-unstyled">
+                {{#each resume.work}}
+                  <li class="detail-item row" id="{{itemID 'experience' @index ../resume.work.length}}" itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">
+                    <div class="col-sm-9 detail-item-content">
+                      <a class="anchor-link item-anchor" data-scroll href="#{{itemID 'experience' @index ../resume.work.length}}">#</a>
+                      <h4>
+                        <strong>{{position}}</strong>
+                        {{~#if company~}}
+                          ,&nbsp;
+                          {{#if website}}
+                            <a href="{{website}}"  target="_blank" itemprop="url"><span itemprop="name">{{company}}</span></a>
+                          {{else}}
+                            <span itemprop="name">{{company}}</span>
+                          {{/if}}
+                        {{/if}}
+                      </h4>
+
+                      {{#if startDate}}
+                        <p class="visible-xs-block text-muted">
+                          <small>
+                            <time datetime="{{startDate}}">{{formatMMMMYYYY startDate}}</time>&nbsp;—&nbsp;
+                            {{#if endDate}}
+                              <time datetime="{{endDate}}">{{formatMMMMYYYY endDate}}</time>
+                            {{else}}
+                              <time>Heute</time>
+                            {{/if}}
+                            &nbsp;<span class="duration-counter"><i aria-hidden="true" class="icon-clock-o"></i>&nbsp;{{humaneDuration startDate endDate}}</span>
+                          </small>
+                        </p>
+                      {{/if}}
+
+                      <p>{{nl2br summary}}</p>
+
+                      {{#if highlights}}
+                        <ul class="detail-highlights">
+                          {{#each highlights}}
+                            <li>{{.}}</li>
+                          {{/each}}
+                        </ul>
+                      {{/if}}
+                    </div>
+
+                    {{#if startDate}}
+                      <div class="col-sm-3 detail-item-sidebar text-muted text-center hidden-xs">
+                        <p>
+                          <time datetime="{{startDate}}">{{formatMMMMYYYY startDate}}</time>
+                          <br>
+                          &nbsp;—&nbsp;
+                          {{#if endDate}}
+                            <br>
+                            <time datetime="{{endDate}}">{{formatMMMMYYYY endDate}}</time>
+                          {{else}}
+                            <time>Heute</time>
+                          {{/if}}
+                        </p>
+                        <p>
+                          <i aria-hidden="true" class="icon-clock-o icon-left"></i>&nbsp;{{humaneDuration startDate endDate}}
+                        </p>
+                      </div>
+                    {{/if}}
+                  </li>
+                {{/each}}
+              </ul>
+            </div>
+          {{/if}}
+
+          {{#if resume.volunteer}}
+            <div class="detail" id="projects">
+              <h3 class="text-uppercase">
+                <a class="anchor-link text-muted" data-scroll href="#projects">
+                  <i aria-hidden="true" class="icon-lg icon-bookmark"></i> Projekte
+                  <span class="anchor-icon" aria-hidden="true"></span>
+                </a>
+              </h3>
+
+              <ul class="list-unstyled">
+                {{#each resume.volunteer}}
+                  <li class="detail-item row" id="{{itemID 'project' @index ../resume.volunteer.length}}" itemprop="memberOf" itemscope itemtype="http://schema.org/Organization">
+                    <div class="col-sm-9 detail-item-content">
+                      <a class="anchor-link item-anchor" data-scroll href="#{{itemID 'project' @index ../resume.volunteer.length}}">#</a>
+                      <h4>
+                        {{#if website}}
+                          <a href="{{website}}"  target="_blank" itemprop="url"><strong itemprop="name">{{organization}}</strong></a>
+                        {{else}}
+                          <strong itemprop="name">{{organization}}</strong>
+                        {{/if}}
+                        {{~#if position~}}
+                          ,&nbsp;<span>{{position}}</span>
+                        {{/if}}
+                      </h4>
+
+                      {{#if startDate}}
+                        <p class="visible-xs-block text-muted">
+                          <small>
+                            <time datetime="{{startDate}}">{{formatMMMMYYYY startDate}}</time>&nbsp;—&nbsp;
+                            {{#if endDate}}
+                              <time datetime="{{endDate}}">{{formatMMMMYYYY endDate}}</time>
+                            {{else}}
+                              <time>Heute</time>
+                            {{/if}}
+                            &nbsp;<span class="duration-counter"><i aria-hidden="true" class="icon-clock-o"></i>&nbsp;{{humaneDuration startDate endDate}}</span>
+                          </small>
+                        </p>
+                      {{/if}}
+
+                      <p itemprop="description">{{nl2br summary}}</p>
+
+                      {{#if highlights}}
+                        <ul class="detail-highlights">
+                          {{#each highlights}}
+                            <li>{{.}}</li>
+                          {{/each}}
+                        </ul>
+                      {{/if}}
+                    </div>
+
+                    {{#if startDate}}
+                      <div class="col-sm-3 detail-item-sidebar text-muted text-center hidden-xs">
+                        <p>
+                          <time datetime="{{startDate}}">{{formatMMMMYYYY startDate}}</time>
+                          <br>
+                          &nbsp;—&nbsp;
+                          {{#if endDate}}
+                            <br>
+                            <time datetime="{{endDate}}">{{formatMMMMYYYY endDate}}</time>
+                          {{else}}
+                            <time>Heute</time>
                           {{/if}}
                         </p>
                         <p>
@@ -389,7 +386,7 @@
             <div class="detail" id="skills">
               <h3 class="text-uppercase">
                 <a class="anchor-link text-muted" data-scroll href="#skills">
-                  <i aria-hidden="true" class="icon-lg icon-code"></i> Skills
+                  <i aria-hidden="true" class="icon-lg icon-code"></i> Fähigkeiten
                   <span class="anchor-icon" aria-hidden="true"></span>
                 </a>
               </h3>
@@ -417,7 +414,7 @@
             <div class="detail" id="awards">
               <h3 class="text-uppercase">
                 <a class="anchor-link text-muted" data-scroll href="#awards">
-                  <i aria-hidden="true" class="icon-lg icon-trophy"></i> Awards
+                  <i aria-hidden="true" class="icon-lg icon-trophy"></i> Auszeichnungen
                   <span class="anchor-icon" aria-hidden="true"></span>
                 </a>
               </h3>
@@ -437,7 +434,7 @@
                       {{#if date}}
                         <p class="visible-xs-block text-muted">
                           <small>
-                            Awarded on:&nbsp;<time datetime="{{date}}">{{formatMMMDDYYYY date}}</time>
+                            Ausgezeichnet am:&nbsp;<time datetime="{{date}}">{{formatMMMDDYYYY date}}</time>
                           </small>
                         </p>
                       {{/if}}
@@ -448,7 +445,60 @@
                     {{#if date}}
                       <div class="col-sm-3 detail-item-sidebar text-muted text-center hidden-xs">
                         <p>
-                          <strong>Awarded on:</strong>
+                          <strong>Ausgezeichnet am:</strong>
+                          <br>
+                          <time datetime="{{date}}">{{formatMMMDDYYYY date}}</time>
+                        </p>
+                      </div>
+                    {{/if}}
+                  </li>
+                {{/each}}
+              </ul>
+            </div>
+          {{/if}}
+          
+          {{#if resume.certifications}}
+            <div class="detail" id="certification">
+              <h3 class="text-uppercase">
+                <a class="anchor-link text-muted" data-scroll href="#certifications">
+                  <i aria-hidden="true" class="icon-lg icon-clipboard"></i> Zertifizierungen
+                  <span class="anchor-icon" aria-hidden="true"></span>
+                </a>
+              </h3>
+
+              <ul class="list-unstyled">
+                {{#each resume.certifications}}
+                  <li class="detail-item row" id="{{itemID 'certification' @index ../resume.publications.length}}">
+                    <div class="col-sm-9 detail-item-content">
+                      <a class="anchor-link item-anchor" data-scroll href="#{{itemID 'certification' @index ../resume.certifications.length}}">#</a>
+                      <h4>
+                        <strong>
+                          {{#if website}}
+                            <a href="{{website}}"  target="_blank" itemprop="url" rel="author"><span itemprop="name">{{title}}</span></a>
+                          {{else}}
+                            <span itemprop="name">{{title}}</span>
+                          {{/if}}
+                        </strong>
+                        {{~#if awarder~}}
+                          ,&nbsp;<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><span itemprop="name">{{awarder}}</span></span>
+                        {{/if}}
+                      </h4>
+                      
+                      {{#if date}}
+                        <p class="visible-xs-block text-muted">
+                          <small>
+                            Ausgezeichnet am:&nbsp;<time datetime="{{date}}">{{formatMMMDDYYYY date}}</time>
+                          </small>
+                        </p>
+                      {{/if}}
+
+                      <p itemprop="description">{{nl2br summary}}</p>
+                    </div>
+
+                    {{#if date}}
+                      <div class="col-sm-3 detail-item-sidebar text-muted text-center hidden-xs">
+                        <p>
+                          <strong>Ausgezeichnet am:</strong>
                           <br>
                           <time datetime="{{date}}">{{formatMMMDDYYYY date}}</time>
                         </p>
@@ -464,7 +514,7 @@
             <div class="detail" id="publications">
               <h3 class="text-uppercase">
                 <a class="anchor-link text-muted" data-scroll href="#publications">
-                  <i aria-hidden="true" class="icon-lg icon-book"></i> Publications
+                  <i aria-hidden="true" class="icon-lg icon-book"></i> Veröffentlichungen
                   <span class="anchor-icon" aria-hidden="true"></span>
                 </a>
               </h3>
@@ -487,9 +537,18 @@
                         {{/if}}
                       </h4>
 
+                      {{#if supervisor}}
+                      <h5>
+                        Beteuer: 
+                        <strong>
+                            <span itemprop="name">{{supervisor}}</span>
+                        </strong>
+                      </h5>
+                      {{/if}}
+
                       {{#if releaseDate}}
                         <p class="visible-xs-block text-muted">
-                          <small>Published on:&nbsp;<time datetime="{{releaseDate}}" itemprop="datePublished">{{formatMMMDDYYYY releaseDate}}</time></small>
+                          <small>Veröffentlicht am:&nbsp;<time datetime="{{releaseDate}}" itemprop="datePublished">{{formatMMMDDYYYY releaseDate}}</time></small>
                         </p>
                       {{/if}}
 
@@ -499,7 +558,7 @@
                     {{#if releaseDate}}
                       <div class="col-sm-3 detail-item-sidebar text-muted text-center hidden-xs">
                         <p>
-                          <strong>Published on:</strong>
+                          <strong>Veröffentlicht am:</strong>
                           <br>
                           <time datetime="{{releaseDate}}" itemprop="datePublished">{{formatMMMDDYYYY releaseDate}}</time>
                         </p>
@@ -515,7 +574,7 @@
             <div class="detail" id="interests">
               <h3 class="text-uppercase">
                 <a class="anchor-link text-muted" data-scroll href="#interests">
-                  <i aria-hidden="true" class="icon-lg icon-heart"></i> Interests
+                  <i aria-hidden="true" class="icon-lg icon-heart"></i> Interessen
                   <span class="anchor-icon" aria-hidden="true"></span>
                 </a>
               </h3>
@@ -543,7 +602,7 @@
             <div class="detail" id="languages">
               <h3 class="text-uppercase">
                 <a class="anchor-link text-muted" data-scroll href="#languages">
-                  <i aria-hidden="true" class="icon-lg icon-comment"></i> Languages
+                  <i aria-hidden="true" class="icon-lg icon-comment"></i> Sprachen
                   <span class="anchor-icon" aria-hidden="true"></span>
                 </a>
               </h3>
@@ -571,7 +630,7 @@
             <div class="detail" id="references">
               <h3 class="text-uppercase">
                 <a class="anchor-link text-muted" data-scroll href="#references">
-                  <i aria-hidden="true" class="icon-lg icon-thumbs-up"></i> References
+                  <i aria-hidden="true" class="icon-lg icon-thumbs-up"></i> Referenzen
                   <span class="anchor-icon" aria-hidden="true"></span>
                 </a>
               </h3>
