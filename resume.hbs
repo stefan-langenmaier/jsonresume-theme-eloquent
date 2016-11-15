@@ -410,21 +410,21 @@
             </div>
           {{/if}}
 
-          {{#if resume.awards}}
-            <div class="detail" id="awards">
+          {{#if resume.competitions}}
+            <div class="detail" id="competitions">
               <h3 class="text-uppercase">
-                <a class="anchor-link text-muted" data-scroll href="#awards">
-                  <i aria-hidden="true" class="icon-lg icon-trophy"></i> Auszeichnungen
+                <a class="anchor-link text-muted" data-scroll href="#competitions">
+                  <i aria-hidden="true" class="icon-lg icon-trophy"></i> Wettbewerbe
                   <span class="anchor-icon" aria-hidden="true"></span>
                 </a>
               </h3>
 
               <ul class="list-unstyled">
-                {{#each resume.awards}}
-                  <li class="detail-item row" id="{{itemID 'award' @index ../resume.awards.length}}">
+                {{#each resume.competitions}}
+                  <li class="detail-item row" id="{{itemID 'competition' @index ../resume.competitions.length}}">
                     <div class="col-sm-9 detail-item-content">
-                      <a class="anchor-link item-anchor" data-scroll href="#{{itemID 'award' @index ../resume.awards.length}}">#</a>
-                      <h4 itemprop="award">
+                      <a class="anchor-link item-anchor" data-scroll href="#{{itemID 'competition' @index ../resume.competitions.length}}">#</a>
+                      <h4 itemprop="competition">
                         <strong>{{title}}</strong>
                         {{~#if awarder~}}
                           ,&nbsp;<span>{{awarder}}</span>
@@ -434,7 +434,7 @@
                       {{#if date}}
                         <p class="visible-xs-block text-muted">
                           <small>
-                            Ausgezeichnet am:&nbsp;<time datetime="{{date}}">{{formatMMMDDYYYY date}}</time>
+                            Teilgenommen am:&nbsp;<time datetime="{{date}}">{{formatMMMDDYYYY date}}</time>
                           </small>
                         </p>
                       {{/if}}
@@ -445,7 +445,7 @@
                     {{#if date}}
                       <div class="col-sm-3 detail-item-sidebar text-muted text-center hidden-xs">
                         <p>
-                          <strong>Ausgezeichnet am:</strong>
+                          <strong>Teilgenommen am:</strong>
                           <br>
                           <time datetime="{{date}}">{{formatMMMDDYYYY date}}</time>
                         </p>
